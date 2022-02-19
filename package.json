@@ -13,9 +13,10 @@
         "circomlibjs": "0.0.8",
         "ethereum-waffle": "^3.0.0",
         "ethers": "^5.0.0",
-        "hardhat": "^2.8.4"
+        "hardhat": "^2.8.4",
+        "hardhat-dependency-compiler": "^1.1.2"
     },
     "dependencies": {
-        "@appliedzkp/semaphore-contracts": "^0.2.0"
+        "@appliedzkp/semaphore-contracts": "^0.3.0"
     }
 }

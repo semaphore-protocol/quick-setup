@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
+import "@appliedzkp/semaphore-contracts/interfaces/IVerifier.sol";
 import "@appliedzkp/semaphore-contracts/base/SemaphoreCore.sol";
 
 /// @title Greeters contract.
@@ -13,8 +14,11 @@ contract Greeters is SemaphoreCore {
     // The offchain Merkle tree contains the greeters' identity commitments.
     uint256 public greeters;
 
-    constructor(uint256 _greeters) {
+    IVerifier public verifier;
+
+    constructor(uint256 _greeters, address _verifier) {
         greeters = _greeters;
+        verifier = IVerifier(_verifier);
     }
 
     // Only users who create valid proofs can greet.
@@ -25,7 +29,7 @@ contract Greeters is SemaphoreCore {
         uint256[8] calldata _proof
     ) external {
         require(
-            _isValidProof(_greeting, greeters, _nullifierHash, greeters, _proof),
+            _isValidProof(_greeting, greeters, _nullifierHash, greeters, _proof, verifier),
             "Greeters: the proof is not valid"
         );
 
