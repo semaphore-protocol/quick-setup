@@ -14,6 +14,7 @@ contract Greeters is SemaphoreCore {
     // The offchain Merkle tree contains the greeters' identity commitments.
     uint256 public greeters;
 
+    // The external verifier used to verify Semaphore proofs.
     IVerifier public verifier;
 
     constructor(uint256 _greeters, address _verifier) {
