@@ -8,7 +8,7 @@ import "@appliedzkp/semaphore-contracts/base/SemaphoreCore.sol";
 /// @dev The following code is just a example to show how Semaphore con be used.
 contract Greeters is SemaphoreCore {
     // A new greeting is published every time a user's proof is validated.
-    event NewGreeting(string greeting);
+    event NewGreeting(bytes32 greeting);
 
     // Greeters are identified by a Merkle root.
     // The offchain Merkle tree contains the greeters' identity commitments.
@@ -25,7 +25,7 @@ contract Greeters is SemaphoreCore {
     // Only users who create valid proofs can greet.
     // The external nullifier is in this example the root of the Merkle tree.
     function greet(
-        string calldata _greeting,
+        bytes32 _greeting,
         uint256 _nullifierHash,
         uint256[8] calldata _proof
     ) external {
