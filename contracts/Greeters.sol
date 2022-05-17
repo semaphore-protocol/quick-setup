@@ -1,8 +1,8 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@appliedzkp/semaphore-contracts/interfaces/IVerifier.sol";
-import "@appliedzkp/semaphore-contracts/base/SemaphoreCore.sol";
+import "@semaphore-protocol/contracts/interfaces/IVerifier.sol";
+import "@semaphore-protocol/contracts/base/SemaphoreCore.sol";
 
 /// @title Greeters contract.
 /// @dev The following code is just a example to show how Semaphore con be used.

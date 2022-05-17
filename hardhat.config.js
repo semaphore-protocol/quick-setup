@@ -6,6 +6,6 @@ module.exports = {
     solidity: "0.8.4",
     dependencyCompiler: {
         // It allows Hardhat to compile the external Verifier.sol contract.
-        paths: ["@appliedzkp/semaphore-contracts/base/Verifier.sol"]
+        paths: ["@semaphore-protocol/contracts/base/Verifier.sol"]
     }
 }
