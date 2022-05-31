@@ -16,7 +16,7 @@ describe("Greeters", function () {
 
     describe("# greet", () => {
         const wasmFilePath = "./static/semaphore.wasm"
-        const finalZkeyPath = "./static/semaphore_final.zkey"
+        const zkeyFilePath = "./static/semaphore.zkey"
 
         it("Should greet", async () => {
             const message = await signers[0].signMessage("Sign this message to create your identity!")
@@ -35,7 +35,7 @@ describe("Greeters", function () {
                 greeting
             )
 
-            const fullProof = await Semaphore.genProof(witness, wasmFilePath, finalZkeyPath)
+            const fullProof = await Semaphore.genProof(witness, wasmFilePath, zkeyFilePath)
             const solidityProof = Semaphore.packToSolidityProof(fullProof.proof)
 
             const nullifierHash = Semaphore.genNullifierHash(merkleProof.root, identity.getNullifier())

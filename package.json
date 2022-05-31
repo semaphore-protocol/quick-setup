@@ -17,6 +17,6 @@
         "hardhat-dependency-compiler": "^1.1.2"
     },
     "dependencies": {
-        "@semaphore-protocol/contracts": "^0.1.0"
+        "@semaphore-protocol/contracts": "^0.2.0"
     }
 }
