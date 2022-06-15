@@ -643,6 +643,14 @@
     "@openzeppelin/contracts" "^4.4.2"
     "@zk-kit/incremental-merkle-tree.sol" "^0.3.1"
 
+"@semaphore-protocol/group@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@semaphore-protocol/group/-/group-0.1.1.tgz#a57598f133fc7af4a79bb4cd438838df9c1e8179"
+  integrity sha512-dT+BNgo2/mbUiunLs/L9OKcFmR24dzQs5iyfbu5AWnpA9fIQm/DQxtVRO2qJEn/xs7gtmsK3RwJ2BDer/kee+Q==
+  dependencies:
+    "@zk-kit/incremental-merkle-tree" "0.4.3"
+    circomlibjs "0.0.8"
+
 "@semaphore-protocol/identity@0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@semaphore-protocol/identity/-/identity-0.2.2.tgz#b12c3ae1b15925827b873fa4b3fd72bae3cbfd92"
@@ -654,16 +662,16 @@
     "@ethersproject/strings" "^5.6.1"
     circomlibjs "0.0.8"
 
-"@semaphore-protocol/proof@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@semaphore-protocol/proof/-/proof-0.2.2.tgz#34da7a6e57be245cb28830b948eebb1374df208b"
-  integrity sha512-fKnd9+l3IiQuDlCIbXnOa4krVPe1rbMAUOR73izayG0uq1vbllRLyobQj2TUh4kVKmuzAfUd422SyutQcjCOIg==
+"@semaphore-protocol/proof@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@semaphore-protocol/proof/-/proof-0.3.1.tgz#723deb63c7b6b95e822d8f043a7adecf0e726dbf"
+  integrity sha512-E/qbqXU/SPblDUM4h+XdWIstpx4GRrk1dI0jejvOSNztOOEHjJCIGTJiKhQgU6dosBjFg7k5NIzuwnpWP7iTRQ==
   dependencies:
     "@ethersproject/bytes" "^5.5.0"
     "@ethersproject/solidity" "^5.5.0"
     "@ethersproject/strings" "^5.5.0"
+    "@semaphore-protocol/group" "0.1.1"
     "@semaphore-protocol/identity" "0.2.2"
-    "@zk-kit/incremental-merkle-tree" "^0.4.3"
     circomlibjs "0.0.8"
     snarkjs "^0.4.13"
 
@@ -898,12 +906,7 @@
   resolved "https://registry.yarnpkg.com/@zk-kit/incremental-merkle-tree.sol/-/incremental-merkle-tree.sol-0.3.1.tgz#904fa76028803f6340e23bd0929d94398659a070"
   integrity sha512-85rZpeSJGeR0yEiIbJwWrZgA68ovc62XiOHcMvAZmJtISsYMVHqzN6w4ax9Ke6bE70sj5V0OSPZ89vgJZ0zxgg==
 
-"@zk-kit/incremental-merkle-tree@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@zk-kit/incremental-merkle-tree/-/incremental-merkle-tree-0.4.2.tgz#a2ad2f9dd2bde8f33d0c30164798ef09d5ed2248"
-  integrity sha512-9wB7RzsuH+PErr3gqBIpy339+JRsTcwgFPnGx6XxkAKatDlxlGFcwJV/vFo0rnhDZhQ7GZviScO51pxusurZyQ==
-
-"@zk-kit/incremental-merkle-tree@^0.4.3":
+"@zk-kit/incremental-merkle-tree@0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@zk-kit/incremental-merkle-tree/-/incremental-merkle-tree-0.4.3.tgz#197f72102d35dd9c546a6a432896d6d6f6de05f4"
   integrity sha512-2qHfrJXtPx8/UmF0wFAUr4VqCLr3J/P859fk/e3fwKLUnf3baeIUAO6inY4wrh0NGy4bzpKUWYjDph0yTbPz6A==

@@ -1,5 +1,4 @@
-const { IncrementalMerkleTree } = require("@zk-kit/incremental-merkle-tree")
-const { poseidon } = require("circomlibjs")
+const { Group } = require("@semaphore-protocol/group")
 const identityCommitments = require("../static/identityCommitments.json")
 const { task, types } = require("hardhat/config")
 
@@ -15,13 +14,11 @@ task("deploy", "Deploy a Greeters contract")
 
         const GreetersContract = await ethers.getContractFactory("Greeters")
 
-        const tree = new IncrementalMerkleTree(poseidon, 20, BigInt(0), 2)
+        const group = new Group()
 
-        for (const identityCommitment of identityCommitments) {
-            tree.insert(identityCommitment)
-        }
+        group.addMembers(identityCommitments)
 
-        const greeters = await GreetersContract.deploy(tree.root, verifier.address)
+        const greeters = await GreetersContract.deploy(group.root, verifier.address)
 
         await greeters.deployed()
 
