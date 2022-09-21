@@ -1,28 +1,35 @@
-const { Group } = require("@semaphore-protocol/group")
-const identityCommitments = require("../static/identityCommitments.json")
 const { task, types } = require("hardhat/config")
 
-task("deploy", "Deploy a Greeters contract")
+task("deploy", "Deploy a Greeter contract")
+    .addOptionalParam("semaphore", "Semaphore contract address", undefined, types.address)
+    .addParam("group", "Group identifier", 1, types.int)
     .addOptionalParam("logs", "Print the logs", true, types.boolean)
-    .setAction(async ({ logs }, { ethers }) => {
-        const VerifierContract = await ethers.getContractFactory("Verifier20")
-        const verifier = await VerifierContract.deploy()
+    .setAction(async ({ logs, semaphore: semaphoreAddress, group: groupId }, { ethers, run }) => {
+        if (!semaphoreAddress) {
+            const { address: verifierAddress } = await run("deploy:verifier", { logs, merkleTreeDepth: 20 })
 
-        await verifier.deployed()
+            const { address } = await run("deploy:semaphore", {
+                logs,
+                verifiers: [
+                    {
+                        merkleTreeDepth: 20,
+                        contractAddress: verifierAddress
+                    }
+                ]
+            })
 
-        logs && console.log(`Verifier20 contract has been deployed to: ${verifier.address}`)
+            semaphoreAddress = address
+        }
 
-        const GreetersContract = await ethers.getContractFactory("Greeters")
+        const Greeter = await ethers.getContractFactory("Greeter")
 
-        const group = new Group()
+        const greeter = await Greeter.deploy(semaphoreAddress, groupId)
 
-        group.addMembers(identityCommitments)
+        await greeter.deployed()
 
-        const greeters = await GreetersContract.deploy(group.root, verifier.address)
+        if (logs) {
+            console.log(`Greeter contract has been deployed to: ${greeter.address}`)
+        }
 
-        await greeters.deployed()
-
-        logs && console.log(`Greeters contract has been deployed to: ${greeters.address}`)
-
-        return greeters
+        return greeter
     })

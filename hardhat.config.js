@@ -1,11 +1,7 @@
 require("@nomiclabs/hardhat-waffle")
-require("hardhat-dependency-compiler")
+require("@semaphore-protocol/hardhat")
 require("./tasks/deploy") // Your deploy task.
 
 module.exports = {
-    solidity: "0.8.4",
-    dependencyCompiler: {
-        // It allows Hardhat to compile the external Verifier.sol contract.
-        paths: ["@semaphore-protocol/contracts/verifiers/Verifier20.sol"]
-    }
+    solidity: "0.8.4"
 }
