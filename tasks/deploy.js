@@ -1,7 +1,7 @@
 const { task, types } = require("hardhat/config")
 
 task("deploy", "Deploy a Greeter contract")
-    .addOptionalParam("semaphore", "Semaphore contract address", undefined, types.address)
+    .addOptionalParam("semaphore", "Semaphore contract address", undefined, types.string)
     .addParam("group", "Group identifier", 42, types.int)
     .addOptionalParam("logs", "Print the logs", true, types.boolean)
     .setAction(async ({ logs, semaphore: semaphoreAddress, group: groupId }, { ethers, run }) => {
@@ -28,7 +28,7 @@ task("deploy", "Deploy a Greeter contract")
         await greeter.deployed()
 
         if (logs) {
-            console.log(`Greeter contract has been deployed to: ${greeter.address}`)
+            console.info(`Greeter contract has been deployed to: ${greeter.address}`)
         }
 
         return greeter

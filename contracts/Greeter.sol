@@ -21,7 +21,7 @@ contract Greeter  {
         semaphore.createGroup(groupId, 20, 0, address(this));
     }
 
-    function registerUser(uint256 identityCommitment, bytes32 username) external {
+    function joinGroup(uint256 identityCommitment, bytes32 username) external {
         semaphore.addMember(groupId, identityCommitment);
 
         users[identityCommitment] = username;

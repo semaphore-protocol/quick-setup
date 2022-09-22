@@ -28,10 +28,10 @@ describe("Greeter", function () {
         group.addMember(users[1].identity.generateCommitment())
     })
 
-    describe("# registerUser", () => {
-        it("Should allow users to register and join the group", async () => {
+    describe("# joinGroup", () => {
+        it("Should allow users to join the group", async () => {
             for (let i = 0; i < group.members.length; i++) {
-                const transaction = greeter.registerUser(group.members[i], users[i].username)
+                const transaction = greeter.joinGroup(group.members[i], users[i].username)
 
                 await expect(transaction).to.emit(greeter, "NewUser").withArgs(group.members[i], users[i].username)
             }
